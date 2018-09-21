@@ -38,9 +38,4 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="leap_years.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-  </ItemGroup>
 </Project>

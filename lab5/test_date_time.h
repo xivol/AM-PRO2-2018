@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿//
+// Лабораторная рвбота №5. Классы. Перегрузка операций
+// tset_date_time.h
+//
+#pragma once
 class test_date_time
 {
     test_date_time();

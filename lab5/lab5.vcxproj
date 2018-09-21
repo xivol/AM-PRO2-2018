@@ -129,9 +129,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="test_date_time.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="leap_years.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

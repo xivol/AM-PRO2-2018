@@ -7,6 +7,8 @@
 
 class test_date_time;
 
+
+// дата и время в секундах с начала эпохи Unix
 class date_time
 {
     // количество секунд с начала эпохи
@@ -25,7 +27,7 @@ class date_time
         https://stackoverflow.com/questions/38043442/how-do-inline-variables-work
     */
 
-    // смещение для подсчета высокосных лет
+    // смещение для подсчёта высокосных лет
     static const uint16_t offset_year = 1900;
 
     // количество дней после смещения
