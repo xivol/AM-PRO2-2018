@@ -7,6 +7,11 @@
 #include "date_time.h"
 #include "test_date_time.h"
 
+const int test_date_time::leap_years[] = { 
+    1972,1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016,2020,2024,2028,2032,
+    2036,2040,2044,2048,2052,2056,2060,2064,2068,2072,2076,2080,2084,2088,2092,2096
+};  
+
 test_date_time::test_date_time()
 {
     std::cerr << "Begining tests for date_time:" << std::endl;
@@ -15,10 +20,6 @@ test_date_time::test_date_time()
 bool test_date_time::is_leap_year()
 {
     std::cerr << "test is_leap_year: ";
-
-    int leap_years[] = { 1972, 1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016,2020,2024,
-        2028,2032,2036,2040,2044,2048,2052,2056,2060,2064,2068,2072,2076,2080,2084,2088,2092,2096
-    };  
   
     for (int i = 1970; i < leap_years[31]; ++i) {
         bool is_leap = std::find(&leap_years[0], leap_years + sizeof(leap_years), i) != leap_years + sizeof(leap_years);
