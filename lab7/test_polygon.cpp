@@ -5,6 +5,15 @@
 #include "polygon.h"
 #include "test_polygon.h"
 
+test_polygon::test_polygon()
+{
+    std::cerr << "Tests for polygon:" << std::endl;
+}
+
+test_polygon::~test_polygon()
+{
+    std::cerr << "All tests for polygon have been passed!" << std::endl;
+}
 
 point * test_polygon::get_points(const size_t length)
 {
@@ -17,6 +26,7 @@ point * test_polygon::get_points(const size_t length)
 
 bool test_polygon::copy()
 {
+    std::cerr << "copy: ";
     size_t n = 15;
     point *points = get_points(n);
     point *result = new point[n];
@@ -30,14 +40,15 @@ bool test_polygon::copy()
 
     delete [] points;
     delete [] result;
-#ifdef _DEBUG
-    std::cerr << "test polygon copy: OK" << std::endl;
-#endif
+
+    std::cerr << "OK" << std::endl;
     return true;
 }
 
 bool test_polygon::points_ctor()
 {
+    std::cerr << "constructor: ";
+
     size_t n = 16;
     point *points = get_points(n);
 
@@ -48,14 +59,16 @@ bool test_polygon::points_ctor()
         assert(t.points[i] == points[i]);
     }
 
-#ifdef _DEBUG
-    std::cerr << "test polygon constructor: OK" << std::endl;
-#endif
+    std::cerr << "OK" << std::endl;
     return true;
 }
 
 bool test_polygon::run()
 {
+#ifdef _DEBUG
     test_polygon test;
     return test.copy() && test.points_ctor();
+#elif
+    return true;
+#endif
 }

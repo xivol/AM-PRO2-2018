@@ -14,7 +14,7 @@ test_point::test_point()
 
 bool test_point::distance_to()
 {
-    std::cerr << "test point distance_to: ";
+    std::cerr << "distance_to: ";
 
     point p1(0, 0);
     point p2(0, 1);
@@ -43,6 +43,10 @@ test_point::~test_point()
 
 bool test_point::run()
 {
+#ifdef _DEBUG
     test_point test;
     return test.distance_to();
+#elif
+    retrun true;
+#endif
 }

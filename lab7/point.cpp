@@ -57,3 +57,8 @@ std::istream &operator>>(std::istream &is, point &p)
     is >> p.x >> p.y;
     return is;
 }
+
+bool operator==(const point &p1, const point & p2)
+{
+    return p1.get_x() == p2.get_x() && p1.get_y() == p2.get_y();
+}

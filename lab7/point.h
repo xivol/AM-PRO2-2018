@@ -30,5 +30,7 @@ public:
 
 point get_point();
 void print(const point &p);
+
 std::ostream &operator<<(std::ostream &os, const point &p);
 
+bool operator==(const point &p1, const point & p2);
