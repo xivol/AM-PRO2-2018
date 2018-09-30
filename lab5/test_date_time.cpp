@@ -14,7 +14,7 @@ const int test_date_time::leap_years[] = {
 
 test_date_time::test_date_time()
 {
-    std::cerr << "Begining tests for date_time:" << std::endl;
+    std::cerr << "Tests for date_time:" << std::endl;
 }
 
 bool test_date_time::is_leap_year()
@@ -34,16 +34,11 @@ bool test_date_time::days_since_unix_epoch()
 {
     std::cerr << "test days_since_unix_epoch: ";
     
-    assert(date_time::days_since_unix_epoch(1970) == 0);
 
-    assert(date_time::days_since_unix_epoch(1971) == 365);
-
-    assert(date_time::days_since_unix_epoch(1973) == 365*3+1);
-
-    assert(date_time::days_since_unix_epoch(2000) == 10957);
-
-    assert(date_time::days_since_unix_epoch(2004) == 12418);
-
+    for (int i = 1970; i < leap_years[31]; ++i) {
+        assert(date_time::days_since_unix_epoch(i) == (i-1970) * 365 + (i - 1901) / 4 - 17);
+    }
+    
     std::cerr << "OK" << std::endl;
     return true;
 }
