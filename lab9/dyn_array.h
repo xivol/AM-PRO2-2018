@@ -1,5 +1,5 @@
 //
-// Лабораторная работа №9. Классы. Конструктор перемещения
+// Лабораторная работа №9. Классы. Конструктор перемещения. Copy-and-Swap
 // dyn_array.h
 //
 #pragma once
@@ -35,6 +35,7 @@ public:
     dyn_array();
 
     // Конструктор от размера
+    // выбрасывает std::invalid_argument при size < 0
     dyn_array(int size);
 
     // Деструктор
@@ -54,9 +55,11 @@ public:
     dyn_array &operator=(dyn_array d);
 
     // Операция доступа к элементам
+    // выбрасывает std::out_of_range при index < 0 или index >= size
     datatype &operator[](int index);
 
     // Операция доступа к элементам для чтения
+    // выбрасывает std::out_of_range при index < 0 или index >= size
     datatype operator[](int index) const;
 
     // Операция сравнения массивов на равенство
@@ -73,6 +76,7 @@ public:
     int count() const;
 
     // Изменение размера массива
+    // выбрасывает std::invalid_argument при new_size < 0
     void resize(int new_size);
 
     // Добавление элемента в конец массива
@@ -80,12 +84,16 @@ public:
     void append(const datatype &x);
 
     // Вставка элемента по заданному индексу
+    // выбрасывает std::out_of_range при index < 0 или index >= size
     void insert(int index, const datatype &x);
 
     // Удаление элемента по заджанному индексу
+    // выбрасывает std::out_of_range при index < 0 или index >= size
     void remove(int index);
 
     // Поиск заданного элемента
+    // возвращает индекс найденного элемента
+    // или -1 если такого значения в массиве нет
     int find(const datatype &x) const;
 
 
