@@ -11,9 +11,10 @@
 
 using namespace std;
 
-int main() {
-    bignum a = -1000000000000000000;
-    bignum b = -1000000000000000001;
+int main()
+{
+    bignum a = -100000000000000000;
+    bignum b = -100000000000000001;
     try {
         cout<< (long)a << " == " << (long)b << " : " << boolalpha << (a == b) <<endl;
     }
