@@ -1,11 +1,7 @@
 //
-//  bignum.cpp
-//  lab10
+// Лабораторная работа №10. Классы. Целые числа с длинной арифметикой
+// bignum.cpp
 //
-//  Created by Илья Лошкарёв on 02.10.2018.
-//  Copyright © 2018 SFEDU. All rights reserved.
-//
-
 #include "bignum.h"
 #include <exception>
 #include <climits>

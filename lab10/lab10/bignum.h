@@ -1,9 +1,6 @@
 //
-//  bignum.h
-//  lab10
-//
-//  Created by Илья Лошкарёв on 02.10.2018.
-//  Copyright © 2018 SFEDU. All rights reserved.
+// Лабораторная работа №10. Классы. Целые числа с длинной арифметикой
+// bignum.h
 //
 #pragma once
 #include <iostream>
@@ -20,6 +17,11 @@ class bignum
     bool negative;
     
 public:
+    
+    /*
+      Инициализация
+    */
+
     // Конструктор по умолчанию
     bignum();
     
@@ -28,9 +30,20 @@ public:
     
     // Конструктор преобразования из строки
     bignum(const char *str);
+
+    /*
+      Методы доступа к полям
+    */
+
+    // Количество цифр
+    size_t size() const;
     
     // Знак числа
-    bool is_negative();
+    bool is_negative() const;
+
+    /*
+      Операции приведения
+    */
     
     // Операции приведения к числу
     operator int64_t() const;
@@ -39,10 +52,8 @@ public:
     explicit operator int() const;
 
     // Операция явного приведения к строке
-    // Выделяет динамическую память!
     explicit operator std::string() const;
-    
-    
+        
     /*
       Операции сравнения
     */
@@ -58,6 +69,10 @@ public:
     bool operator<(const bignum &other) const;
     bool operator>=(const bignum &other) const;
     
+    /*
+      Арифметические операции
+    */
+
     // Операция унарный минус
     bignum operator-() const;
     
@@ -87,7 +102,7 @@ public:
     // Метод вычисления НОД
     bignum gcd(const bignum &other) const;
     
-    // Проверка числа на простоту
+    // Метод проверки числа на простоту
     bool is_prime() const;
 };
 
