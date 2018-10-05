@@ -16,7 +16,7 @@
 bignum::bignum() : digits(), negative(false)
 {}
 
-bignum::bignum(long number) : digits()
+bignum::bignum(int64_t number) : digits()
 {
     if (number < 0) {
         number = -number;
@@ -30,16 +30,16 @@ bignum::bignum(long number) : digits()
     }
 }
 
-bignum::operator long() const
+bignum::operator int64_t() const
 {
-    if (digits.count() > (int)ceil(log10(LONG_MAX)))
+    if (digits.count() > (int)ceil(log10(INT64_MAX)))
         throw std::length_error("Bignum is too big for long!");
     
-    long result = 0;
+    int64_t result = 0;
     if (digits.count() == 0)
         return result;
     
-    long mul = (long)::pow(10, digits.count()-1);
+    int64_t mul = (int64_t)::pow(10, digits.count()-1);
     for (int i = digits.count() - 1; i >= 0; --i)
     {
         result = result + mul * digits[i];

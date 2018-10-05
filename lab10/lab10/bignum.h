@@ -24,7 +24,7 @@ public:
     bignum();
     
     // Конструктор преобразования
-    bignum(long number);
+    bignum(int64_t number);
     
     // Конструктор преобразования из строки
     bignum(const char *str);
@@ -33,7 +33,7 @@ public:
     bool is_negative();
     
     // Операции приведения к числу
-    operator long() const;
+    operator int64_t() const;
     
     // Операции приведения к маленькому числу
     explicit operator int() const;
