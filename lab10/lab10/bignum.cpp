@@ -29,7 +29,7 @@ bignum::bignum(int64_t number) : digits()
 bignum::operator int64_t() const
 {
     if (digits.count() > (int)ceil(log10(INT64_MAX)))
-        throw std::length_error("Bignum is too big for long!");
+        throw std::length_error("Bignum is too big for int64!");
     
     int64_t result = 0;
     if (digits.count() == 0)
