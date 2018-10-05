@@ -7,8 +7,16 @@
 //
 
 #include "bignum.h"
+#include <exception>
+#include <climits>
+#include <cmath>
+#include <cctype>
+#include <string>
 
-bignum::bignum(long number)
+bignum::bignum() : digits(), negative(false)
+{}
+
+bignum::bignum(long number) : digits()
 {
     if (number < 0) {
         number = -number;
@@ -24,26 +32,57 @@ bignum::bignum(long number)
 
 bignum::operator long() const
 {
+    if (digits.count() > (int)ceil(log10(LONG_MAX)))
+        throw std::length_error("Bignum is too big for long!");
+    
     long result = 0;
     if (digits.count() == 0)
         return result;
     
-    for (int i = digits.count() - 1; i >= 0; i--)
-        result = result * 10 + digits[i];
+    long mul = (long)::pow(10, digits.count()-1);
+    for (int i = digits.count() - 1; i >= 0; --i)
+    {
+        result = result + mul * digits[i];
+        mul /= 10;
+    }
     
+    if (negative)
+        result *= -1;
+        
     return result;
 }
 
-std::istream &operator>>(std::istream &is, bignum &b)
+bool bignum::operator==(const bignum &other) const
 {
-    int n = 0;
-    char *str = new char[n];
-    b = bignum(str);
-    return is;
+    if (negative != other.negative ||
+        digits.count() != other.digits.count())
+        return false;
+    
+    for (int i = digits.count() - 1; i >= 0; --i)
+        if (digits[i] != other.digits[i])
+            return false;
+    
+    return true;
 }
 
-std::ostream &operator<<(std::ostream &os, const bignum &b)
+bool bignum::operator!=(const bignum &other) const
 {
-    os << (char*) b;
-    return os;
+    return !(*this == other);
 }
+
+//std::istream &operator>>(std::istream &is, bignum &b)
+//{
+//    std::string str;
+//    while (is.peek() == '-' || isdigit(is.peek()))
+//    {
+//        str.insert(str.begin(), is.get());
+//    }
+//    b = bignum(str.c_str());
+//    return is;
+//}
+
+//std::ostream &operator<<(std::ostream &os, const bignum &b)
+//{
+//    os << (string)b;
+//    return os;
+//}

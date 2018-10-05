@@ -8,6 +8,7 @@
 #pragma once
 #include <iostream>
 #include <climits>
+#include <string>
 #include "dyn_array.h"
 
 class bignum
@@ -18,28 +19,47 @@ class bignum
     // Знак числа
     bool negative;
     
-    // Заполнение значащих цифр и знака
-    void fill_digits_and_sign(long source);
-    
 public:
     // Конструктор по умолчанию
     bignum();
     
-    // Конструкторы преобразования
+    // Конструктор преобразования
     bignum(long number);
-    operator long() const;
     
-    // Конструктор от строки
-    explicit bignum(char* str);
+    // Конструктор преобразования из строки
+    bignum(const char *str);
     
     // Знак числа
     bool is_negative();
+    
+    // Операции приведения к числу
+    operator long() const;
     
     // Операции приведения к маленькому числу
     explicit operator int() const;
 
     // Операция явного приведения к строке
-    explicit operator char*() const;
+    // Выделяет динамическую память!
+    explicit operator std::string() const;
+    
+    
+    /*
+      Операции сравнения
+    */
+    
+    // Сравнение на равенство
+    bool operator==(const bignum &other) const;
+    bool operator!=(const bignum &other) const;
+    
+    // Сравнение на неравенство
+    bool operator>(const bignum &other) const;
+    bool operator<=(const bignum &other) const;
+    
+    bool operator<(const bignum &other) const;
+    bool operator>=(const bignum &other) const;
+    
+    // Операция унарный минус
+    bignum operator-() const;
     
     // Операции сложения
     bignum operator+(const bignum &other) const;
@@ -55,7 +75,6 @@ public:
     
     // Метод возведения в степень
     bignum pow(const bignum &exp) const;
-    bignum &pow(const bignum &exp);
     
     // Операции деления
     bignum operator/(const bignum &other) const;

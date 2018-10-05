@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E0D457BB21635C53003F5413 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0D457BA21635C53003F5413 /* main.cpp */; };
 		E0D457E12163D41C003F5413 /* bignum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0D457E02163D41C003F5413 /* bignum.cpp */; };
+		E0D457E42164AA21003F5413 /* dyn_array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0D457E32164AA21003F5413 /* dyn_array.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,11 +25,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E01BF03C2164E84500E7EEB5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E0D457B721635C52003F5413 /* lab10 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab10; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D457BA21635C53003F5413 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E0D457C121635C9D003F5413 /* bignum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bignum.h; sourceTree = "<group>"; };
 		E0D457E02163D41C003F5413 /* bignum.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bignum.cpp; sourceTree = "<group>"; };
 		E0D457E22163D57A003F5413 /* dyn_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dyn_array.h; sourceTree = "<group>"; };
+		E0D457E32164AA21003F5413 /* dyn_array.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dyn_array.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				E0D457BA21635C53003F5413 /* main.cpp */,
 				E0D457C121635C9D003F5413 /* bignum.h */,
 				E0D457E02163D41C003F5413 /* bignum.cpp */,
+				E0D457E32164AA21003F5413 /* dyn_array.cpp */,
+				E01BF03C2164E84500E7EEB5 /* README.md */,
 			);
 			path = lab10;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			files = (
 				E0D457BB21635C53003F5413 /* main.cpp in Sources */,
 				E0D457E12163D41C003F5413 /* bignum.cpp in Sources */,
+				E0D457E42164AA21003F5413 /* dyn_array.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,18 +251,22 @@
 		E0D457BF21635C53003F5413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NUE223H73G;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		E0D457C021635C53003F5413 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NUE223H73G;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
