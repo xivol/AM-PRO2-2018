@@ -6,7 +6,7 @@
 * `std::invalid_argument`;
 * `std::out_of_range`;
 
-Реализовать тесты для проверки исключений.
+Cтандартные исключения расположены в файле `<stdexcept>`.Реализовать тесты для проверки исключений.
 
 Реализовать идиому [copy-and-swap](https://ru.wikipedia.org/wiki/Copy-and-swap):
 * метод `swap`;
