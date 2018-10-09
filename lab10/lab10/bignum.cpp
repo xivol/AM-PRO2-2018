@@ -54,11 +54,7 @@ bool bignum::operator==(const bignum &other) const
         digits.count() != other.digits.count())
         return false;
     
-    for (int i = digits.count() - 1; i >= 0; --i)
-        if (digits[i] != other.digits[i])
-            return false;
-    
-    return true;
+    return digits == other.digits;
 }
 
 bool bignum::operator!=(const bignum &other) const
@@ -71,7 +67,7 @@ bool bignum::operator!=(const bignum &other) const
 //    std::string str;
 //    while (is.peek() == '-' || isdigit(is.peek()))
 //    {
-//        str.insert(str.begin(), is.get());
+//        str += is.get();
 //    }
 //    b = bignum(str.c_str());
 //    return is;
