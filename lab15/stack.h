@@ -11,6 +11,9 @@ class stack
 {
 public:
     typedef int datatype;
+    
+    // Виртуальный деструктор
+    // обязателен в абстрактных классах
     virtual ~stack() = 0;
 
     // Проверка на пустоту
@@ -29,6 +32,7 @@ public:
 // Стек на базе массива
 class d_stack : public stack
 {
+    // Предполагается dyn_array::datatype - int
     dyn_array data;
 public:
     // Т.к. класс dyn_array имеет все необходимые методы,
@@ -69,4 +73,5 @@ public:
     datatype top();
 
     friend std::ostream &operator<<(std::ostream &os, const l_stack &s);
+    friend class test_l_stack;
 };

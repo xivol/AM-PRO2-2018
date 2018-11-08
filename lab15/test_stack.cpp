@@ -5,26 +5,19 @@
 #include <cassert>
 #include <iostream>
 #include "test_stack.h"
+
 using namespace std;
 
+//
+// TEST D_STACK
+//
 
-test_stack::test_stack(stack &st) : st(st)
-{}
-
-void test_stack::cleanup()
-{
-    while (!st.is_empty())
-    {
-        st.pop();
-    }
-}
-
-bool test_stack::is_empty()
+bool test_d_stack::is_empty()
 {
 #ifdef _DEBUG
     cerr << "test_d_stack::is_empty: ";
 #endif
-
+    d_stack st;
     assert(st.is_empty());
 
     st.push(1);
@@ -41,16 +34,15 @@ bool test_stack::is_empty()
 #ifdef _DEBUG
     cerr << "OK" << endl;
 #endif
-    cleanup();
     return true;
 }
 
-bool test_stack::push()
+bool test_d_stack::push()
 {
 #ifdef _DEBUG
     cerr << "test_d_stack::push: ";
 #endif
-
+    d_stack st;
     for (int i = 0; i < 1000; ++i) {
         st.push(i);
         assert(st.top() == i);
@@ -59,17 +51,15 @@ bool test_stack::push()
 #ifdef _DEBUG
     cerr << "OK" << endl;
 #endif
-    
-    cleanup();
     return true;
 }
 
-bool test_stack::pop()
+bool test_d_stack::pop()
 {
 #ifdef _DEBUG
     cerr << "test_stack::pop: ";
 #endif
-    
+    d_stack st;
     try {
         st.pop();
         assert(true);
@@ -89,16 +79,16 @@ bool test_stack::pop()
 #ifdef _DEBUG
     cerr << "OK" << endl;
 #endif
-    
-    cleanup();
     return true;
 }
 
-bool test_stack::top()
+bool test_d_stack::top()
 {
 #ifdef _DEBUG
     cerr << "test_stack::top: ";
 #endif
+    
+    d_stack st;
     try {
         st.top();
         assert(false && "Ожидалось исключение при пустом стеке");
@@ -115,19 +105,48 @@ bool test_stack::top()
 #ifdef _DEBUG
     cerr << "OK" << endl;
 #endif
-    cleanup();
     return true;
-}
-
-bool test_stack::run()
-{
-    return is_empty() && push() &&
-           pop() && top();
 }
 
 bool test_d_stack::run()
 {
-    d_stack st;
-    test_stack test((stack&)st);
-    return test.run();
+    test_d_stack t;
+    return t.is_empty() && t.push() &&
+           t.pop() && t.top();
+}
+
+//
+// TEST L_STACK
+//
+
+test_l_stack::array_list test_l_stack::get_array_list(const initializer_list<stack::datatype>& data)
+{
+    array_list result = new l_stack::node[data.size()];
+    
+    int k=0;
+    for (auto it = data.begin(); it!= data.end(); ++it)
+    {
+        result[k].data = *it;
+        result[k].next = &result[k+1];
+        k++;
+    }
+    result[data.size()-1].next = nullptr;
+    
+    return result;
+}
+
+bool test_l_stack::is_equal(l_stack::node *list1, l_stack::node* list2)
+{
+    if (list1 == list2)
+        return true;
+    while(list1 != nullptr && list2 != nullptr)
+    {
+        if (list1->data != list2->data)
+            return false;
+        list1 = list1->next;
+        list2 = list2->next;
+    }
+    if (list1 != list2)
+        return false;
+    return true;
 }

@@ -65,8 +65,8 @@
 			children = (
 				E0134CA021917A6C0075C352 /* stack.cpp */,
 				E0134CA321917A6C0075C352 /* stack.h */,
-				E0134CA121917A6C0075C352 /* test_stack.cpp */,
 				E0134CA221917A6C0075C352 /* test_stack.h */,
+				E0134CA121917A6C0075C352 /* test_stack.cpp */,
 				E0134C99219179640075C352 /* main.cpp */,
 			);
 			path = lab15;
